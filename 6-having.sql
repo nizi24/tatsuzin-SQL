@@ -29,3 +29,20 @@ SELECT class FROM TestResults
 GROUP BY class
 HAVING AVG(CASE WHEN sex = '女' THEN score ELSE NULL END) >
        AVG(CASE WHEN sex = '男' THEN score ELSE NULL END);
+
+
+6-1,
+SELECT CASE WHEN COUNT(*) <> MAX(seq) THEN '歯抜けあり'
+       ELSE '歯抜けなし' END
+FROM SeqTbl;
+
+6-2,
+SELECT dpt FROM Students
+GROUP BY dpt
+HAVING COUNT(*) = SUM(CASE WHEN sbmt_date < '2018-10-01' THEN 1
+                      ELSE 0 END);
+
+6-3,
+SELECT shop, COUNT(I1.item), COUNT(item)
+FROM ShopItems S1 INNER JOIN Items I1
+ON S1.item = I1.item
