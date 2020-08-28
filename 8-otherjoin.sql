@@ -1,0 +1,6 @@
+8-2,
+SELECT employee,
+  SUM(CASE WHEN child_1 IS NULL THEN 0 ELSE 1 END,
+      CASE WHEN child_2 IS NULL THEN 0 ELSE 1 END,
+      CASE WHEN child_3 IS NULL THEN 0 ELSE 1 END) AS 合計
+FROM Personnel;
